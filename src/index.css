@@ -6,7 +6,28 @@ body {
   background-color: rgb(217, 226, 233);
 }
 
-/* code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
-} */
+span {
+  color: rgb(117, 142, 158);
+}
+
+.todo {
+  margin-bottom: 1.5rem;
+}
+
+.todo.status span {
+  text-decoration: line-through;
+}
+
+.todo label {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+  padding: 1rem;
+  background-color: rgb(202, 211, 217);
+}
+
+.todo i {
+  font-size: 20px;
+}
