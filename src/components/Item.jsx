@@ -4,6 +4,19 @@ export default function Item({ id, title, status }) {
 
     const [checked, setChecked] = useState(status);
     const [vsible, setVisible] = useState(true);
+    // const [edit, setEdit] = useState(false);
+
+    // const editTodo = () => {
+    //     setEdit(true);
+    //     if (edit) {
+    //         <div>
+    //             <input type="text" />
+    //             <button>Edit</button>
+    //         </div>
+    //         return {title};
+    //     } 
+    // }
+
 
     const removeElement = () => {
         setVisible(prev => !prev);
@@ -27,13 +40,15 @@ export default function Item({ id, title, status }) {
         classes.push('status');
     }
 
+    
+
     const updateStatus = () => {
         setChecked(!checked);
         const storedTodos = JSON.parse(localStorage.getItem('tasks'));
         storedTodos.map(item => {
             if (item.id === id) {
                 item.status = !checked;
-            } 
+            }
             return true;
         })
         localStorage.setItem('tasks', JSON.stringify(storedTodos))
@@ -41,15 +56,16 @@ export default function Item({ id, title, status }) {
 
     return (
         <>
-        {vsible && (
-            <li className={classes.join(' ')}>
-                <label>
-                    <input type="checkbox" checked={checked} onChange={updateStatus} />
-                    <span>{title}</span>
-                    <i onClick={removeElement} className="material-icon red-text">X</i>
-                </label>
-            </li>
-        )}
+            {vsible && (
+                <li className={classes.join(' ')}>
+                    <label>
+                        <input type="checkbox" checked={checked} onChange={updateStatus} />
+                        <span>{title}</span>
+                        <button onClick={editTodo}>Edit</button>
+                        <i onClick={removeElement} className="material-icon red-text">X</i>
+                    </label>
+                </li>
+            )}
         </>
 
     )
